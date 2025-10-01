@@ -18,7 +18,20 @@
     <?php
 
 	get_template_part( 'template-parts/entry-header' );
+	get_template_part( 'template-parts/entry-header' );
 
+    // >>> BẮT ĐẦU VỊ TRÍ CHÈN CODE CUSTOM DATE <<<
+    if ( 'post' === get_post_type() ) { // Đảm bảo chỉ hiển thị trên Bài viết (Post)
+        ?>
+        <div class="custom-date-display">
+            <span class="day-number"><?php echo get_the_date('d'); ?></span>
+            <div class="month-year-group">
+                <span class="month-name">THÁNG <?php echo get_the_date('m'); ?></span>
+                <span class="year-number"><?php echo get_the_date('Y'); ?></span>
+            </div>
+        </div>
+        <?php
+    }
 	if ( ! is_search() ) {
 		get_template_part( 'template-parts/featured-image' );
 	}

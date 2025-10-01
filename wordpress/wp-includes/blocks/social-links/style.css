@@ -71,7 +71,7 @@
 
 :where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link{
   background-color:#f0f0f0;
-  color:#444;
+  color:#fff;
 }
 :where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-amazon{
   background-color:#f90;

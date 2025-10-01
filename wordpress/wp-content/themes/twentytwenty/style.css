@@ -6582,3 +6582,82 @@ a.to-the-top > * {
 		width: calc(100% - 8rem);
 	}
 }
+#site-footer .copyright{
+	margin: 0 auto;
+}
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link {
+    /* Tắt màu nền */
+    background: none !important; 
+    background-color: transparent !important; 
+    
+    /* Tắt màu chữ */
+    color: inherit !important; 
+}
+
+/* Thường thì màu và nền được áp dụng cho thẻ <a> bên trong <li> */
+/* Bạn nên kiểm tra và áp dụng cho cả thẻ <a> (anchor) nếu cần: */
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link a {
+    background: none !important;
+    color: inherit !important;
+}
+/* Nhắm mục tiêu thẻ <svg> bên trong liên kết xã hội */
+.wp-block-social-link-anchor svg {
+    width: 30px !important;  /* Tăng chiều rộng lên (ví dụ: từ 24px lên 30px) */
+    height: 30px !important; /* Tăng chiều cao lên */
+}
+
+/* */
+.custom-date-display {
+    display: flex; /* Sắp xếp ngày và nhóm tháng/năm trên cùng một hàng */
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    border: 1px solid #eee; /* Đường viền nhẹ bao quanh */
+    padding: 10px;
+    background-color: #fff;
+    /* Bạn có thể thêm shadow hoặc màu nền nếu cần */
+}
+
+.custom-date-display .day-number {
+    font-size: 60px; /* Kích thước chữ rất lớn cho ngày */
+    font-weight: 700; /* Phông chữ đậm */
+    color: #0047AB; /* Màu xanh đậm (giống trong hình) */
+    line-height: 1; /* Căn dòng sát hơn */
+    margin-right: 10px; /* Khoảng cách giữa ngày và tháng/năm */
+    position: relative;
+}
+
+/* Thêm dấu chấm nhỏ nếu cần (như trong hình) */
+.custom-date-display .day-number::after {
+    content: '.'; 
+    position: absolute;
+    bottom: 5px; /* Điều chỉnh vị trí dấu chấm */
+    right: 5px;
+    font-size: 15px; /* Kích thước dấu chấm */
+    line-height: 1;
+}
+
+.custom-date-display .month-year-group {
+    display: flex; /* Sắp xếp tháng và năm theo cột */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.custom-date-display .month-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c757d; /* Màu xám cho chữ THÁNG */
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.custom-date-display .year-number {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0047AB; /* Màu xanh đậm (giống màu ngày) */
+    line-height: 1.2;
+}
+
+
+
+
+
+
