@@ -52,6 +52,7 @@ if ( is_singular() ) {
 		} else {
 			the_title( '<h2 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
 		}
+		
 
 		$intro_text_width = '';
 
@@ -71,9 +72,11 @@ if ( is_singular() ) {
 			<?php
 		}
 
-		// Default to displaying the post meta.
-		twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
+		// MÃ NÀY ĐÃ BỊ VÔ HIỆU HÓA ĐỂ LOẠI BỎ NGÀY THÁNG MẶC ĐỊNH.
+		/* twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); */
+		
 		?>
+		
 
 	</div><!-- .entry-header-inner -->
 

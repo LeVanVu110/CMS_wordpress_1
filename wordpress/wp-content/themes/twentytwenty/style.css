@@ -6607,54 +6607,72 @@ a.to-the-top > * {
 }
 
 /* */
+/* -------------------------------------------------------------------
+   CSS Custom cho khối hiển thị Ngày/Tháng/Năm nổi bật
+   Dán toàn bộ code này vào mục "CSS Bổ sung" trong WordPress.
+   ------------------------------------------------------------------- */
+
 .custom-date-display {
-    display: flex; /* Sắp xếp ngày và nhóm tháng/năm trên cùng một hàng */
-    align-items: center; /* Căn chỉnh theo chiều dọc */
-    border: 1px solid #eee; /* Đường viền nhẹ bao quanh */
-    padding: 10px;
-    background-color: #fff;
-    /* Bạn có thể thêm shadow hoặc màu nền nếu cần */
+    /* Căn chỉnh tổng thể: Ngày và Nhóm Tháng/Năm nằm trên cùng một hàng */
+    display: flex; 
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 15px; 
+    margin-bottom: 20px; /* Tạo khoảng cách với nội dung phía dưới */
+    /* Đường viền nhẹ (chỉ ở dưới và phải) để tạo cảm giác khối hộp */
+    border-bottom: 1px solid #e0e0e0; 
+    border-right: 1px solid #e0e0e0;
+    width: fit-content; /* Giữ cho khung bao vừa với nội dung */
+    background-color: #fff; /* Nền trắng */
 }
 
+/* Phần số Ngày (09) */
 .custom-date-display .day-number {
-    font-size: 60px; /* Kích thước chữ rất lớn cho ngày */
-    font-weight: 700; /* Phông chữ đậm */
-    color: #0047AB; /* Màu xanh đậm (giống trong hình) */
-    line-height: 1; /* Căn dòng sát hơn */
-    margin-right: 10px; /* Khoảng cách giữa ngày và tháng/năm */
+    font-size: 70px; /* Kích thước chữ lớn */
+    font-weight: 800; 
+    color: #0047AB; /* Màu xanh đậm nổi bật */
+    line-height: 1; /* Căn dòng sát, quan trọng cho hiệu ứng này */
+    margin-right: 15px; 
     position: relative;
+    font-family: Arial, sans-serif; /* Chọn font chữ phù hợp */
 }
 
-/* Thêm dấu chấm nhỏ nếu cần (như trong hình) */
+/* Tạo dấu chấm nhỏ dưới số ngày */
 .custom-date-display .day-number::after {
     content: '.'; 
     position: absolute;
-    bottom: 5px; /* Điều chỉnh vị trí dấu chấm */
+    bottom: 0px; /* Điều chỉnh vị trí dấu chấm */
     right: 5px;
-    font-size: 15px; /* Kích thước dấu chấm */
+    font-size: 20px; 
     line-height: 1;
+    color: #0047AB;
 }
 
+/* Nhóm Tháng và Năm (THÁNG 9, 2025) */
 .custom-date-display .month-year-group {
-    display: flex; /* Sắp xếp tháng và năm theo cột */
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; /* Xếp Tháng và Năm theo cột dọc */
     justify-content: center;
 }
 
+/* Phần chữ THÁNG 9 */
 .custom-date-display .month-name {
     font-size: 14px;
-    font-weight: 500;
-    color: #6c757d; /* Màu xám cho chữ THÁNG */
+    font-weight: 600;
+    color: #6c757d; /* Màu xám nhạt */
     line-height: 1.2;
     text-transform: uppercase;
+    font-family: Arial, sans-serif;
 }
 
+/* Phần số Năm (2025) */
 .custom-date-display .year-number {
     font-size: 16px;
-    font-weight: 500;
-    color: #0047AB; /* Màu xanh đậm (giống màu ngày) */
+    font-weight: 600;
+    color: #0047AB; /* Màu xanh đậm (giống màu Ngày) */
     line-height: 1.2;
+    font-family: Arial, sans-serif;
 }
+
 
 
 
