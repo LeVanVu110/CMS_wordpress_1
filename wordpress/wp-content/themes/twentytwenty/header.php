@@ -30,7 +30,7 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header" class="header-footer-group">
+		<header id="site-header" class="header-footer-group color-header">
 
 			<div class="header-inner section-inner">
 
@@ -56,20 +56,25 @@
 
 					<?php } ?>
 
-					<div class="header-titles">
-
+					<div class="header-titles" >
 						<?php
-							// Site title or logo.
-							twentytwenty_site_logo();
+                            // Site description.
+                           twentytwenty_site_description();
 
-							// Site description.
-							twentytwenty_site_description();
+
 						?>
+<!--************************************************search va btn************************************************-->
 
 					</div><!-- .header-titles -->
 
+                    <div class="title-edit"><?php // Site title or logo.
+                        twentytwenty_site_logo(); ?></div>
+                    <div class="header-search-form">
+                        <?php get_search_form(); ?>
+                    </div>
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal"  data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
-						<span class="toggle-inner">
+
+                        <span class="toggle-inner">
 							<span class="toggle-icon">
 								<?php twentytwenty_the_theme_svg( 'ellipsis' ); ?>
 							</span>
@@ -162,9 +167,50 @@
 
 							<?php
 						}
+
 						?>
 
-						</div><!-- .header-toggles -->
+                            <div class="account-toggle-wrapper">
+                                <div class="header-account">
+                                    <?php
+                                    // Kiểm tra xem người dùng đã đăng nhập chưa
+                                    if ( is_user_logged_in() ) {
+                                        // Đã đăng nhập: Hiển thị biểu tượng user và menu sổ xuống
+                                        ?>
+                                        <div class="account-icon-dropdown">
+                                            <a href="#" class="account-toggle">
+                                                <div class="account-icon-wrap">
+                                                    <!-- Icon user giống mẫu -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                                        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                                                    </svg>
+                                                    <span class="account-text"><?php _e( 'Account  ▼', 'twentytwenty' ); ?></span>
+                                                </div>
+                                            </a>
+                                            <div class="account-dropdown-menu">
+                                                <a href="<?php echo admin_url( 'profile.php' ); ?>">
+                                                    <?php _e( 'Hồ sơ của tôi', 'twentytwenty' ); ?>
+                                                </a>
+                                                <a href="<?php echo wp_logout_url( home_url() ); ?>">
+                                                    <?php _e( 'Đăng xuất (Logout)', 'twentytwenty' ); ?>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        // Chưa đăng nhập: Hiển thị link Login
+                                        ?>
+                                        <a href="<?php echo wp_login_url(); ?>" class="login-link toggle">
+                                      <span class="toggle-inner">
+                                          <?php twentytwenty_the_theme_svg( 'user' ); ?>
+                                          <span class="toggle-text"><?php _e( 'Login', 'twentytwenty' ); ?></span>
+                                      </span>
+                                        </a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div></div><!-- .header-toggles -->
 						<?php
 					}
 					?>

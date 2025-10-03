@@ -839,3 +839,68 @@ function twentytwenty_get_elements_array() {
 	 */
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+
+/**
+ * Hàm tùy chỉnh để giới hạn độ dài đoạn trích (excerpt) theo ký tự
+ */
+function custom_excerpt_length_by_char($text)
+{
+    // Chỉ áp dụng giới hạn trên trang danh sách bài viết (không phải trang bài viết đơn)
+    if (!is_singular()) {
+        $max_chars = 100; // <- ĐẶT SỐ KÝ TỰ BẠN MUỐN Ở ĐÂY
+
+        // Loại bỏ HTML và ký tự đặc biệt
+        $text = strip_tags($text);
+
+        // Kiểm tra độ dài và cắt chuỗi (hỗ trợ Tiếng Việt tốt)
+        if (mb_strlen($text) > $max_chars) {
+            // Cắt chuỗi
+            $text = mb_substr($text, 0, $max_chars);
+            // Đảm bảo không bị cắt ngang từ cuối cùng, và thêm [...]
+            $text = mb_substr($text, 0, mb_strrpos($text, ' ')) . '<span class="dots-color">[...]</span>';
+        }
+    }
+    return $text;
+}
+
+// Áp dụng bộ lọc này để WordPress sử dụng hàm giới hạn của chúng ta
+add_filter('get_the_excerpt', 'custom_excerpt_length_by_char', 999);
+
+// Bổ sung: Nếu bạn muốn đoạn tóm tắt (excerpt) luôn được tạo (ngay cả khi không điền tay)
+// và bạn muốn đảm bảo dấu ... cuối cùng là [...]
+function custom_excerpt_more_dots($more)
+{
+    return '[...]';
+}
+
+add_filter('excerpt_more', 'custom_excerpt_more_dots');
+
+function custom_account_dropdown_script() {
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy nút toggle (link Account)
+            const accountToggle = document.querySelector('.account-toggle');
+            // Lấy container cha để bật/tắt class active
+            const accountDropdown = document.querySelector('.account-icon-dropdown');
+
+            if (accountToggle && accountDropdown) {
+                accountToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    accountDropdown.classList.toggle('active'); // Bật/tắt class 'active'
+                });
+
+                // Đóng menu khi người dùng nhấp ra ngoài
+                document.addEventListener('click', function(e) {
+                    // Kiểm tra xem click có ở bên ngoài dropdown và dropdown đang hiển thị không
+                    if (!accountDropdown.contains(e.target) && accountDropdown.classList.contains('active')) {
+                        accountDropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <?php
+}
+add_action( 'wp_footer', 'custom_account_dropdown_script' );

@@ -73,7 +73,7 @@ if ( is_singular() ) {
 		}
 
 		// MÃ NÀY ĐÃ BỊ VÔ HIỆU HÓA ĐỂ LOẠI BỎ NGÀY THÁNG MẶC ĐỊNH.
-		/* twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); */
+		// twentytwenty_the_post_meta( get_the_ID(), 'single-top' ); 
 		
 		?>
 		

@@ -126,7 +126,7 @@ html {
 }
 
 body {
-	background: #f5efe0;
+	background: #ffffff;
 	box-sizing: border-box;
 	color: #000;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
@@ -188,6 +188,331 @@ path {
 	word-wrap: normal !important;
 	word-break: normal;
 }
+/*----------------------------------------chinh sua footer----------------------------------------*/
+.footer-widgets nav a{
+	font-weight: normal;
+}
+
+.footer-widgets nav a::before{
+content: "» ";
+
+
+}
+.footer-widgets nav ul li{
+	transition: transform 0.3s linear;
+}
+.footer-widgets nav ul li:hover{
+	transform: translateX(10px);
+	animation: 1s linear;
+
+}
+.footer-widgets nav ul li:hover a{
+	font-weight: bold;
+	text-decoration: none;
+}
+#site-footer span{
+ margin: 0 auto;
+}
+.footer-icon{
+	margin-bottom: 50px;
+}
+.footer-icons-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: -30px;
+
+}
+/* Bỏ background mặc định + đổi màu icon trắng */
+.wp-block-social-links.is-layout-flex .wp-social-link,
+.wp-block-social-links.is-layout-flex .wp-social-link a,
+.wp-block-social-links.is-layout-flex .wp-social-link svg,
+.wp-block-social-links.is-layout-flex .wp-social-link svg path {
+	background-color: transparent !important; /* bỏ nền */
+	color: #fff !important;                  /* icon theo currentColor */
+	fill: currentColor !important;           /* ép fill SVG */
+}
+
+/* Đổi màu khi hover (ví dụ xanh) */
+.wp-block-social-links.is-layout-flex .wp-social-link:hover,
+.wp-block-social-links.is-layout-flex .wp-social-link a:hover,
+.wp-block-social-links.is-layout-flex .wp-social-link svg:hover,
+.wp-block-social-links.is-layout-flex .wp-social-link svg path:hover {
+	color: #1da1f2 !important; /* màu hover */
+	fill: currentColor !important;
+}
+
+/*----------------------------------------end----------------------------------------*/
+
+/*----------------------------------------chinh sua bài viết----------------------------------------*/
+/* --- Cấu trúc tổng thể của bài viết trong danh sách --- */
+/* Thiết lập Flexbox để Ngày, Kẻ dọc, và Nội dung nằm ngang */
+.custom-post-item {
+	/* Quan trọng: Bỏ padding/border thừa */
+	padding: 0;
+	border: none;
+	position: static;
+	display: block;
+
+	/* Canh giữa khối bài viết trên trang */
+	margin: 10px 0 0 100px; /* 15px trên dưới, auto trái phải */
+
+	/* Giới hạn chiều rộng để canh giữa hoạt động */
+	max-width: 550px; /* Tăng max-width lên chút để khối trắng nằm giữa */
+}
+
+
+.full-link-wrap {
+	display: block;
+	text-decoration: none;
+	position: static;
+}
+
+.custom-post-wrap {
+	/* Khối Màu Trắng - Là khối được nhấp vào */
+	display: flex;
+	background: #ffffff;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	align-items: center;
+
+	/* Đảm bảo chiều rộng đồng nhất và phù hợp với max-width của cha */
+	width: 100%; /* Chiếm toàn bộ không gian của .custom-post-item */
+	max-width: 500px; /* Vẫn giữ giới hạn chiều rộng nội tại */
+	height: 150px;
+	padding: 25px;
+
+	gap: 30px;
+	cursor: pointer;
+}
+
+/* ======================================= */
+/* CÁC THIẾT LẬP NỘI DUNG */
+/* ======================================= */
+
+/* --- Cột Ngày/Tháng --- */
+.custom-post-date {
+	text-align: center;
+	/* Dùng Flexbox/Padding để căn lề thay vì Margin lớn */
+	min-width: 60px;
+	padding-right: 5px;
+}
+
+.custom-post-date .day-large {
+	font-size: 40px;
+	font-family: Didot;
+	font-weight: bold;
+	line-height: 1;
+	color: #000000;
+	padding-bottom: 5px;
+}
+
+.custom-post-date .month-small {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #666;
+	line-height: 1;
+	margin-top: 5px;
+	/* Loại bỏ gạch chân nếu có */
+	text-decoration: none !important;
+}
+
+/* --- Đường kẻ dọc phân chia --- */
+.custom-post-divider {
+	width: 2px;
+	background-color: #000000;
+	height: 100px;
+}
+
+/* --- Cột Nội dung (Tiêu đề và Tóm tắt) --- */
+.custom-post-content {
+	/* Đảm bảo nội dung chiếm hết không gian còn lại */
+	flex-grow: 1;
+}
+
+.custom-post-content .entry-title {
+	margin: 0 0 5px 0;
+	font-size: 20px;
+	font-weight: 700;
+	color: #0099d8;
+}
+
+.custom-post-content .entry-excerpt {
+	font-size: 14px;
+	font-family: "Roboto Thin", sans-serif;
+	color: #4a4a4a;
+	/* Loại bỏ gạch chân nếu có */
+	text-decoration: none !important;
+}
+.custom-post-content .entry-excerpt .dots-color {
+	/* Màu xanh lam (Giống màu tiêu đề: #0099d8) */
+	display: inline-block;
+	margin-left: 10px;
+	color: #0099d8;
+	transition: transform .5s;
+}
+.custom-post-content .entry-excerpt .dots-color:hover{
+	transform: scale(1.2);
+}
+
+/* Ẩn các thành phần metadata và nội dung gốc của theme */
+.custom-post-item .post-inner,
+.custom-post-item .section-inner {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.custom-post-wrap {
+		/* Cho phép khối co giãn hết cỡ trên di động */
+		max-width: 90%;
+		height: auto;
+		padding: 15px; /* Giảm padding */
+
+		/* Chuyển sang xếp dọc để tránh nội dung bị co lại */
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.custom-post-date {
+		/* Đưa Ngày/Tháng về căn trái khi xếp dọc */
+		text-align: left;
+		padding-bottom: 10px;
+		min-width: auto;
+	}
+
+	.custom-post-date .day-large {
+		font-size: 30px; /* Giảm cỡ chữ ngày */
+	}
+
+	.custom-post-divider {
+		display: none; /* Ẩn kẻ dọc trên di động */
+	}
+}
+/*----------------------------------------end----------------------------------------*/
+/*----------------------------------------chinh sua header----------------------------------------*/
+.color-header{
+	background: rgba(213, 213, 213, 0.72) !important;
+}
+.header-search-form{
+	margin-left: 20px;
+}
+/* Thiết lập kiểu dáng cho trường nhập liệu (Search) */
+.header-search-form .search-form .search-field {
+	/* Đảm bảo field có viền và nền theo mẫu */
+	background-color: #ffffff; /* Nền trắng */
+	border: 1px solid #ccc; /* Viền xám nhạt */
+	padding: 8px 10px;
+	height: 38px; /* Chiều cao cố định */
+	font-size: 14px;
+	border-radius: 4px; /* Bo góc nhẹ */
+	width: 200px; /* Chiều rộng của ô search */
+}
+
+/* Thiết lập kiểu dáng cho nút Submit */
+.header-search-form .search-form .search-submit {
+	/* Tạo kiểu cho nút Submit */
+	background-color: #f7f7f7; /* Nền xám nhạt */
+	border: 1px solid #ccc;
+	color: #444; /* Màu chữ xám đậm */
+	padding: 8px 15px;
+	height: 38px;
+	font-weight: normal;
+	font-size: 14px;
+	border-radius: 4px;
+	margin-left: 5px; /* Khoảng cách với ô search */
+	cursor: pointer;
+	text-transform: none !important;
+}
+.title-edit{
+	margin-left: 10px;
+	padding: 26px 10px;
+	background-color: rgba(131, 131, 131, 0.63);
+}
+
+/* Custom Account Dropdown Styles */
+/* CONTAINER: Căn chỉnh thẳng hàng với Menu và Search */
+/* CONTAINER: Căn chỉnh thẳng hàng với Menu và Search */
+/* CSS */
+.account-toggle-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*padding: 0 10px;*/
+	margin-top: 3px;
+
+}
+
+.account-toggle {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none !important;
+	color: #333 !important;
+	cursor: pointer;
+}
+
+.account-icon-wrap {
+	display: flex;
+	flex-direction: column; /* xếp dọc icon và chữ */
+	align-items: center;
+	margin-top: 10px;
+}
+
+.account-toggle svg {
+	width: 30px;
+	height: 28px;
+	fill: #333;
+	margin: 0 auto;
+
+}
+
+.account-toggle .account-text {
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+
+/* Định vị và ẩn menu sổ xuống */
+.account-dropdown-menu {
+	display: none; /* Mặc định ẩn */
+	position: absolute;
+	top: 100%;
+	right: 0;
+	min-width: 180px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	z-index: 999;
+	padding: 5px 0;
+}
+
+.account-dropdown-menu a {
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	color: #333;
+	font-size: 1.5rem;
+	white-space: nowrap;
+}
+
+.account-dropdown-menu a:hover {
+	background-color: #f0f0f0;
+}
+
+/* Hiển thị menu khi có class 'active' */
+.account-icon-dropdown.active .account-dropdown-menu {
+	display: block;
+}
+.account-toggle-wrapper {
+	/* Đảm bảo nó cùng dòng với Search và Menu */
+	display: flex;
+	align-items: center;
+	position: relative;
+
+}
+.header-account{
+	margin-bottom: 20px;
+}
+/*----------------------------------------end----------------------------------------*/
+
 
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
@@ -512,6 +837,7 @@ li > ol {
 
 .reset-list-style li {
 	margin: 0;
+
 }
 
 dt,
@@ -1337,7 +1663,7 @@ ul.social-icons li {
 .cover-modal {
 	display: none;
 	-ms-overflow-style: none;
-	overflow: -moz-scrollbars-none;
+	/*overflow: -moz-scrollbars-none;*/
 }
 
 .cover-modal::-webkit-scrollbar {
@@ -1361,16 +1687,70 @@ ul.social-icons li {
 
 
 #site-header {
-	background: #fff;
 	position: relative;
 }
 
 .header-inner {
 	max-width: 168rem;
-	padding: 3.15rem 0;
+	height: 100%;
+	/*padding: 3.15rem 0;*/
 	z-index: 100;
 }
+/* 1. Kích hoạt Flexbox cho container cha (header-inner) */
+.header-inner.section-inner {
+	display: flex;
+	align-items: center; /* Căn giữa theo chiều dọc */
+	justify-content: space-between; /* Tách biệt Logo/Menu và Search */
+	/*padding-top: 10px;*/
+	/*padding-bottom: 10px;*/
+}
 
+/* 2. Định vị Menu và Search ngang hàng với Logo */
+/* Tùy chỉnh này áp dụng cho phần chứa menu */
+.header-navigation-wrapper {
+	/* Đặt menu cạnh search form (nếu muốn) */
+	display: flex;
+	align-items: center;
+	order: 2; /* Đảm bảo menu nằm ở giữa */
+}
+
+/* 3. Tạo kiểu cho Form Tìm kiếm ở vị trí mới */
+.header-search-form.desktop-search-form {
+	order: 3; /* Đảm bảo search nằm bên phải */
+	flex-shrink: 0;
+}
+
+/* Đảm bảo menu items không bị ảnh hưởng */
+.primary-menu-wrapper {
+	margin-right: 20px; /* Khoảng cách giữa menu và search */
+}
+/* Màu chữ mặc định cho menu */
+.primary-menu-wrapper a {
+	color: #444444 !important;
+	padding: 10px 15px; /* Tạo không gian cho ô màu */
+	display: block;
+	text-decoration: none;
+}
+
+/* Ô màu khi di chuột (Hover) */
+.primary-menu-wrapper li a:hover {
+	background-color: #f0f0f0;
+	border-radius: 4px;
+}
+
+/* Ô màu khi là trang hiện tại (.current-menu-item) */
+.primary-menu-wrapper .current-menu-item,
+.primary-menu-wrapper .current_page_item {
+	background-color: #e6e6e6;
+	border-radius: 4px;
+}
+
+/* Chữ đậm và màu đậm cho mục hiện tại */
+.primary-menu-wrapper .current-menu-item a,
+.primary-menu-wrapper .current_page_item a {
+	color: #444444 !important;
+	font-weight: bold;
+}
 /* Header Titles ----------------------------- */
 
 .header-titles-wrapper {
@@ -1407,7 +1787,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 
 .site-title a:hover,
 .site-title a:focus {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .site-description {
@@ -1578,6 +1958,9 @@ body:not(.enable-search-modal) .site-logo img {
 .primary-menu-wrapper {
 	display: none;
 }
+.primary-menu-wrapper a{
+	color: rgba(0, 0, 0, 0.6)!important;
+}
 
 ul.primary-menu {
 	display: flex;
@@ -1745,6 +2128,7 @@ ul.primary-menu {
 .primary-menu ul li.menu-item-has-children:focus > ul,
 .primary-menu ul li.menu-item-has-children.focus > ul {
 	right: calc(100% + 2rem);
+	color: #00ba37;
 }
 
 .primary-menu ul ul::before {
@@ -4770,13 +5154,13 @@ a.to-the-top > * {
 	figure.wp-block-gallery.alignleft {
 
 		/*rtl:ignore*/
-		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
+		/*margin-left: calc(( 100vw - 58rem - 8rem ) / -2);*/
 	}
 
 	figure.wp-block-gallery.alignright {
 
 		/*rtl:ignore*/
-		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
+		/*margin-right: calc(( 100vw - 58rem - 8rem ) / -2);*/
 	}
 
 	/* Entry Content ------------------------- */
@@ -4793,7 +5177,7 @@ a.to-the-top > * {
 	.entry-content > .wp-block-image .alignleft {
 
 		/*rtl:ignore*/
-		margin-left: calc(( 100vw - 58rem - 8rem ) / -2);
+		/*margin-left: calc(( 100vw - 58rem - 8rem ) / -2);*/
 	}
 
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .alignleft,
@@ -4814,7 +5198,7 @@ a.to-the-top > * {
 	.entry-content > .wp-block-image .alignright {
 
 		/*rtl:ignore*/
-		margin-right: calc(( 100vw - 58rem - 8rem ) / -2);
+		/*margin-right: calc(( 100vw - 58rem - 8rem ) / -2);*/
 	}
 
 	[class*="wp-block"]:not(.alignwide):not(.alignfull) [class*="__inner-container"] > .alignright,
@@ -4981,10 +5365,6 @@ a.to-the-top > * {
 
 
 	/* Site Header --------------------------- */
-
-	.header-inner {
-		padding: 3.8rem 0;
-	}
 
 	.site-title {
 		font-size: 2.4rem;
@@ -5781,7 +6161,7 @@ a.to-the-top > * {
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-		padding: 2.8rem 0;
+		/*padding: 2.8rem 0;*/
 	}
 
 	.header-titles-wrapper {
@@ -5798,11 +6178,20 @@ a.to-the-top > * {
 		justify-content: flex-start;
 		margin: -1rem 0 0 -2.4rem;
 	}
+	.header-titles .site-description{
+		font-weight: bold;
+		font-size: 2em;
+	}
+	.header-titles .site-title{
+		font-weight: 500;
+		font-size: 1em;
 
+	}
 	.header-titles .site-title,
 	.header-titles .site-logo,
 	.header-titles .site-description {
 		margin: 1rem 0 0 2.4rem;
+		color: rgba(0, 0, 0, 0.6);
 	}
 
 	.wp-custom-logo .header-titles {
@@ -5836,11 +6225,18 @@ a.to-the-top > * {
 		display: flex;
 		flex-shrink: 0;
 		margin-right: -3rem;
+		color: black !important;
+	}
+	.header-toggles .toggle-inner {
+		color: rgba(0, 0, 0, 0.6) !important;
+	}
+	.header-toggles .toggle-inner .toggle-text{
+		color: rgba(0, 0, 0, 0.6) !important;
 	}
 
 	.header-inner .toggle {
 		height: 4.4rem;
-		padding: 0 3rem;
+		/*padding: 0 3rem;*/
 		position: relative;
 		bottom: auto;
 		left: auto;
@@ -5850,19 +6246,10 @@ a.to-the-top > * {
 	}
 
 	.header-inner .toggle-wrapper {
-		position: relative;
+		padding-top: 5px;
 	}
 
-	.header-inner .toggle-wrapper::before {
-		background: #dedfdf;
-		content: "";
-		display: block;
-		height: 2.7rem;
-		position: absolute;
-		left: 0;
-		top: calc(50% - 1.35rem);
-		width: 0.1rem;
-	}
+
 
 	.header-inner .toggle-wrapper:first-child::before {
 		content: none;
@@ -5884,7 +6271,7 @@ a.to-the-top > * {
 		left: 0;
 		right: 0;
 		text-align: center;
-		top: calc(100% - 0.3rem);
+		top: calc(100% - 0.7rem);
 		width: auto;
 	}
 
@@ -6418,13 +6805,13 @@ a.to-the-top > * {
 	body.template-full-width .entry-content > .alignleft {
 
 		/*rtl:ignore*/
-		margin-left: calc(( 100vw - 120rem ) / 2);
+		/*margin-left: calc(( 100vw - 120rem ) / 2);*/
 	}
 
 	body.template-full-width .entry-content > .alignright {
 
 		/*rtl:ignore*/
-		margin-right: calc(( 100vw - 120rem ) / 2);
+		/*margin-right: calc(( 100vw - 120rem ) / 2);*/
 	}
 
 }
@@ -6582,100 +6969,3 @@ a.to-the-top > * {
 		width: calc(100% - 8rem);
 	}
 }
-#site-footer .copyright{
-	margin: 0 auto;
-}
-:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link {
-    /* Tắt màu nền */
-    background: none !important; 
-    background-color: transparent !important; 
-    
-    /* Tắt màu chữ */
-    color: inherit !important; 
-}
-
-/* Thường thì màu và nền được áp dụng cho thẻ <a> bên trong <li> */
-/* Bạn nên kiểm tra và áp dụng cho cả thẻ <a> (anchor) nếu cần: */
-:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link a {
-    background: none !important;
-    color: inherit !important;
-}
-/* Nhắm mục tiêu thẻ <svg> bên trong liên kết xã hội */
-.wp-block-social-link-anchor svg {
-    width: 30px !important;  /* Tăng chiều rộng lên (ví dụ: từ 24px lên 30px) */
-    height: 30px !important; /* Tăng chiều cao lên */
-}
-
-/* */
-/* -------------------------------------------------------------------
-   CSS Custom cho khối hiển thị Ngày/Tháng/Năm nổi bật
-   Dán toàn bộ code này vào mục "CSS Bổ sung" trong WordPress.
-   ------------------------------------------------------------------- */
-
-.custom-date-display {
-    /* Căn chỉnh tổng thể: Ngày và Nhóm Tháng/Năm nằm trên cùng một hàng */
-    display: flex; 
-    align-items: center; /* Căn giữa theo chiều dọc */
-    padding: 15px; 
-    margin-bottom: 20px; /* Tạo khoảng cách với nội dung phía dưới */
-    /* Đường viền nhẹ (chỉ ở dưới và phải) để tạo cảm giác khối hộp */
-    border-bottom: 1px solid #e0e0e0; 
-    border-right: 1px solid #e0e0e0;
-    width: fit-content; /* Giữ cho khung bao vừa với nội dung */
-    background-color: #fff; /* Nền trắng */
-}
-
-/* Phần số Ngày (09) */
-.custom-date-display .day-number {
-    font-size: 70px; /* Kích thước chữ lớn */
-    font-weight: 800; 
-    color: #0047AB; /* Màu xanh đậm nổi bật */
-    line-height: 1; /* Căn dòng sát, quan trọng cho hiệu ứng này */
-    margin-right: 15px; 
-    position: relative;
-    font-family: Arial, sans-serif; /* Chọn font chữ phù hợp */
-}
-
-/* Tạo dấu chấm nhỏ dưới số ngày */
-.custom-date-display .day-number::after {
-    content: '.'; 
-    position: absolute;
-    bottom: 0px; /* Điều chỉnh vị trí dấu chấm */
-    right: 5px;
-    font-size: 20px; 
-    line-height: 1;
-    color: #0047AB;
-}
-
-/* Nhóm Tháng và Năm (THÁNG 9, 2025) */
-.custom-date-display .month-year-group {
-    display: flex;
-    flex-direction: column; /* Xếp Tháng và Năm theo cột dọc */
-    justify-content: center;
-}
-
-/* Phần chữ THÁNG 9 */
-.custom-date-display .month-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #6c757d; /* Màu xám nhạt */
-    line-height: 1.2;
-    text-transform: uppercase;
-    font-family: Arial, sans-serif;
-}
-
-/* Phần số Năm (2025) */
-.custom-date-display .year-number {
-    font-size: 16px;
-    font-weight: 600;
-    color: #0047AB; /* Màu xanh đậm (giống màu Ngày) */
-    line-height: 1.2;
-    font-family: Arial, sans-serif;
-}
-
-
-
-
-
-
-

@@ -1,111 +1,84 @@
 <?php
-/**
- * The default template for displaying content
- *
- * Used for both singular and index.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
- */
-
-?>
-
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-
-    <?php
-
-    // Lời gọi này sẽ tải template-parts/entry-header.php, nơi chứa Tiêu đề bài viết.
-    get_template_part( 'template-parts/entry-header' );
-
-    // >>> BẮT ĐẦU VỊ TRÍ CHÈN CODE CUSTOM DATE <<<
-    // Đảm bảo chỉ hiển thị trên Bài viết (Post)
-   
-
-    if ( ! is_search() ) {
-        get_template_part( 'template-parts/featured-image' );
-    }
-
+// Bắt đầu cấu trúc mới cho danh sách bài viết (trang chủ, danh mục, tìm kiếm,...)
+if ( ! is_singular() ) :
     ?>
-	
 
-    <div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
+<article <?php post_class( 'custom-post-item' ); ?> id="post-<?php the_ID(); ?>">
 
-        <div class="entry-content">
-<!-- 		
-        <div class="custom-date-display">
-            <span class="day-number"><?php echo get_the_date('d'); ?></span>
-            <div class="month-year-group">
-                <span class="month-name">THÁNG <?php echo get_the_date('n'); ?></span>
-                <span class="year-number"><?php echo get_the_date('Y'); ?></span>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="full-link-wrap">
+
+        <div class="custom-post-wrap">
+            <div class="custom-post-date">
+                <div class="day-large">
+                    <?php the_time( 'd' ); ?>
+                </div>
+                <div class="month-small">
+                    <?php
+                    // Lấy Tháng bằng số và thêm chữ THÁNG (Tiếng Việt)
+                    echo 'THÁNG ' . get_the_time( 'm' );
+                    ?>
+                </div>
             </div>
-        </div> -->
-     
-    
+
+            <div class="custom-post-divider"></div>
+
+            <div class="custom-post-content">
+                <h2 class="entry-title">
+                    <?php the_title(); ?>
+                </h2>
+                <div class="entry-excerpt">
+                    <?php the_excerpt(); ?>
+                </div>
+                
+            </div>
+        </div></a></article><?php
+else :
+    // Giữ nguyên code gốc Twenty Twenty cho trang đơn lẻ
+    ?>
+
+    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+        <div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
+            <div class="entry-content">
+                <?php the_content( __( 'Continue reading', 'twentytwenty' ) ); ?>
+            </div>
+        </div>
+        <div class="section-inner">
             <?php
-			
-            if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) {
-                the_excerpt();
-            } else {
-                the_content( __( 'Continue reading', 'twentytwenty' ) );
+            wp_link_pages( array(/* ... */) );
+            edit_post_link();
+            twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
+            if ( post_type_supports( get_post_type( get_the_ID() ), 'author' ) && is_single() ) {
+                get_template_part( 'template-parts/entry-author-bio' );
             }
             ?>
-            
-
-        </div><!-- .entry-content -->
-
-    </div><!-- .post-inner -->
-
-    <div class="section-inner">
+        </div>
+        
         <?php
-        wp_link_pages(
-            array(
-                'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-                'after'       => '</nav>',
-                'link_before' => '<span class="page-number">',
-                'link_after'  => '</span>',
-            )
-        );
-
-        edit_post_link();
-
-        // Single bottom post meta.
-        twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
-
-        if ( post_type_supports( get_post_type( get_the_ID() ), 'author' ) && is_single() ) {
-
-            get_template_part( 'template-parts/entry-author-bio' );
-
+        // KIỂM TRA: Nếu là trang đơn lẻ
+        if ( is_single() ) { 
+            // Bước 1: Gọi phần điều hướng (navigation) của TT
+            get_template_part( 'template-parts/navigation' ); 
+            
+            // BƯỚC 2: THÊM THÔNG TIN TÁC GIẢ NGAY SAU NAVIGATION
+            // Chúng ta dùng class 'section-inner' của TT để căn chỉnh đúng
+            ?>
+            <div class="entry-author section-inner">
+                <span class="author-label">Đăng bởi:</span>
+                <?php the_author_posts_link(); // Tác giả cho bài viết đơn lẻ ?>
+            </div>
+            <?php
         }
+        
+        // Phần comments
+        if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+            ?><div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
+        }
+        
+        if ( is_single() ) { get_template_part( 'template-parts/navigation' ); }
+        
         ?>
+    </article>
 
-    </div><!-- .section-inner -->
-
-    <?php
-
-    if ( is_single() ) {
-
-        get_template_part( 'template-parts/navigation' );
-
-    }
-
-    /*
-     * Output comments wrapper if it's a post, or if comments are open,
-     * or if there's a comment number – and check for password.
-     */
-    if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
-        ?>
-
-    <div class="comments-wrapper section-inner">
-
-        <?php comments_template(); ?>
-
-    </div><!-- .comments-wrapper -->
-
-    <?php
-    }
-    ?>
-
-</article><!-- .post -->
+<?php
+endif; // Kết thúc is_singular()
+?>
