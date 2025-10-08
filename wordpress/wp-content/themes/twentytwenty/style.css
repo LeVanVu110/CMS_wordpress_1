@@ -152,7 +152,7 @@ body {
 }
 
 #site-content {
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 
@@ -258,7 +258,6 @@ content: "» ";
 	margin: 10px 0 0 100px; /* 15px trên dưới, auto trái phải */
 
 	/* Giới hạn chiều rộng để canh giữa hoạt động */
-	max-width: 550px; /* Tăng max-width lên chút để khối trắng nằm giữa */
 }
 
 
@@ -279,12 +278,75 @@ content: "» ";
 	width: 100%; /* Chiếm toàn bộ không gian của .custom-post-item */
 	max-width: 500px; /* Vẫn giữ giới hạn chiều rộng nội tại */
 	height: 150px;
-	padding: 25px;
+	/* padding: 25px; */
 
 	gap: 30px;
 	cursor: pointer;
 }
+/* content  */
+.color-accent{
+	color: #ff2727 !important;
+}
+.archive-header{
+	background-color:white !important;
+	color: black !important;
+}
+/* 1. Thiết lập Layout tổng thể của Form */
+/* 1. Thiết lập Layout tổng thể của Form */
+.no-search-results-form.search-form-3 {
+	display: flex;
+	align-items: center;
+	max-width: 650px;
+	margin: 40px auto;
+	padding: 10px;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.no-search-results-form.search-form::before {
+	content: "\f002";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 18px;
+	color: #666;
+	margin-top: 14px;
+	/*margin-right: 6px;*/
+	transition: color 0.3s ease;
+}
 
+/* 2. Tạo kiểu cho Ô nhập liệu (Search Field) - Chứa Icon */
+.no-search-results-form.search-field {
+	flex-grow: 1;
+	/* Tăng padding trái để chừa chỗ cho icon, đây là phần quan trọng */
+	padding: 10px 15px 10px 5px !important;
+	border: none !important;
+	outline: none;
+	font-size: 16px;
+	color: #333;
+}
+
+/* 3. Tạo kiểu cho Nút Tìm kiếm (Search Button) */
+c.search-submit {
+	background-color: #38A852 !important; /* Màu xanh lá cây */
+	color: white !important;
+	border: none !important;
+	padding: 12px 25px !important;
+	font-size: 16px !important;
+	text-transform: capitalize;
+	border-radius: 3px !important;
+	cursor: pointer;
+	margin-left: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.no-search-results-form.search-submit:hover {
+	background-color: #2F8C43 !important;
+}
+/* ảnh search content  */
+.custom-post-thumbnail{
+	width: 100% !important;
+}
 /* ======================================= */
 /* CÁC THIẾT LẬP NỘI DUNG */
 /* ======================================= */
@@ -293,8 +355,10 @@ content: "» ";
 .custom-post-date {
 	text-align: center;
 	/* Dùng Flexbox/Padding để căn lề thay vì Margin lớn */
-	min-width: 60px;
+	min-width: 80px;
 	padding-right: 5px;
+	margin-top: 10px;
+	margin-bottom: auto;
 }
 
 .custom-post-date .day-large {
@@ -377,6 +441,7 @@ content: "» ";
 		text-align: left;
 		padding-bottom: 10px;
 		min-width: auto;
+		
 	}
 
 	.custom-post-date .day-large {

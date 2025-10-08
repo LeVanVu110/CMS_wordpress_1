@@ -8,6 +8,21 @@ if ( ! is_singular() ) :
     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="full-link-wrap">
 
         <div class="custom-post-wrap">
+            <?php
+            // START: THÊM ẢNH ĐẠI DIỆN VÀO ĐÂY
+            if ( is_search() ) {
+                ?>
+                <div class="custom-post-thumbnail">
+                    <?php 
+                    // the_post_thumbnail('thumbnail') sẽ lấy ảnh đại diện với kích thước thumbnail (150x150)
+                    // Bạn có thể đổi thành 'medium' hoặc 'large' nếu muốn ảnh to hơn.
+                    the_post_thumbnail( 'thumbnail' ); 
+                    ?>
+                </div>
+                <?php
+            }
+            // END: THÊM ẢNH ĐẠI DIỆN
+            ?>
             <div class="custom-post-date">
                 <div class="day-large">
                     <?php the_time( 'd' ); ?>
