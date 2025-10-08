@@ -12,17 +12,19 @@ if ( ! is_singular() ) :
             // START: THÊM ẢNH ĐẠI DIỆN VÀO ĐÂY
             if ( is_search() ) {
                 ?>
-                <div class="custom-post-thumbnail">
-                    <?php 
+            <div class="custom-post-thumbnail">
+                <?php 
                     // the_post_thumbnail('thumbnail') sẽ lấy ảnh đại diện với kích thước thumbnail (150x150)
                     // Bạn có thể đổi thành 'medium' hoặc 'large' nếu muốn ảnh to hơn.
                     the_post_thumbnail( 'thumbnail' ); 
                     ?>
-                </div>
-                <?php
+            </div>
+            <?php
             }
             // END: THÊM ẢNH ĐẠI DIỆN
+            
             ?>
+
             <div class="custom-post-date">
                 <div class="day-large">
                     <?php the_time( 'd' ); ?>
@@ -44,21 +46,24 @@ if ( ! is_singular() ) :
                 <div class="entry-excerpt">
                     <?php the_excerpt(); ?>
                 </div>
-                
+
             </div>
-        </div></a></article><?php
+        </div>
+    </a>
+</article><?php
 else :
     // Giữ nguyên code gốc Twenty Twenty cho trang đơn lẻ
     ?>
 
-    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-        <div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
-            <div class="entry-content">
-                <?php the_content( __( 'Continue reading', 'twentytwenty' ) ); ?>
-            </div>
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+    <div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
+        <div class="entry-content strainline">
+            <!-- <div class="line-divider"></div> -->
+            <?php the_content( __( 'Continue reading', 'twentytwenty' ) ); ?>
         </div>
-        <div class="section-inner">
-            <?php
+    </div>
+    <div class="section-inner">
+        <?php
             wp_link_pages( array(/* ... */) );
             edit_post_link();
             twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
@@ -66,9 +71,9 @@ else :
                 get_template_part( 'template-parts/entry-author-bio' );
             }
             ?>
-        </div>
-        
-        <?php
+    </div>
+
+    <?php
         // KIỂM TRA: Nếu là trang đơn lẻ
         if ( is_single() ) { 
             // Bước 1: Gọi phần điều hướng (navigation) của TT
@@ -77,11 +82,11 @@ else :
             // BƯỚC 2: THÊM THÔNG TIN TÁC GIẢ NGAY SAU NAVIGATION
             // Chúng ta dùng class 'section-inner' của TT để căn chỉnh đúng
             ?>
-            <div class="entry-author section-inner">
-                <span class="author-label">Đăng bởi:</span>
-                <?php the_author_posts_link(); // Tác giả cho bài viết đơn lẻ ?>
-            </div>
-            <?php
+    <div class="entry-author section-inner">
+        <span class="author-label">Đăng bởi:</span>
+        <?php the_author_posts_link(); // Tác giả cho bài viết đơn lẻ ?>
+    </div>
+    <?php
         }
         
         // Phần comments
@@ -92,7 +97,7 @@ else :
         if ( is_single() ) { get_template_part( 'template-parts/navigation' ); }
         
         ?>
-    </article>
+</article>
 
 <?php
 endif; // Kết thúc is_singular()
