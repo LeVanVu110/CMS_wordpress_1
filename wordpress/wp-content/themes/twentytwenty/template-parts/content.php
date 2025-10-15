@@ -102,7 +102,7 @@ else :
             ?><div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
         }
         
-        if ( is_single() ) { get_template_part( 'template-parts/navigation' ); }
+        // if ( is_single() ) { get_template_part( 'template-parts/navigation' ); }
         
         ?>
 </article>

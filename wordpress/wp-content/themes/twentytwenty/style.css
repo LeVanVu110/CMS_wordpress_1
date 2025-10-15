@@ -1420,6 +1420,120 @@ input[type="search"]:focus {
     padding-top: 50px; /* Ensure content doesn't get covered by the circle */
 }
 /* end date content  */
+
+/* css có phần trang  */
+/* ==========================================================================
+   CSS CHO PHÂN TRANG BÀI VIẾT - STYLE MỚI (Giống 100% ảnh)
+   ========================================================================== */
+
+/* --- CONTAINER CHÍNH CHO PHẦN CHUYỂN TIẾP --- */
+.pagination-single {
+    margin-top: 40px !important;
+    border-top: 2px solid #eee !important;
+    padding-top: 20px !important;
+}
+
+/* Bố cục Flex cho 2 link (Previous và Next) - CĂN TRÁI HẾT */
+.pagination-single-inner {
+    display: flex !important;
+    flex-direction: column !important; /* Xếp Previous và Next theo chiều dọc */
+    align-items: flex-start !important; /* QUAN TRỌNG: Căn trái hoàn toàn */
+    gap: 1px !important; 
+    width: 100% !important;
+}
+
+/* --- ĐỊNH DẠNG TỪNG MỤC CHUYỂN TIẾP (Previous/Next) --- */
+.navigation-item {
+    display: flex !important; 
+    align-items: center !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid #eee !important;
+    transition: background-color 0.2s !important;
+    font-family: Arial, sans-serif !important;
+    
+    width: 100% !important; 
+    flex-direction: row !important; /* Ngày -> Tiêu đề */
+    justify-content: flex-start !important;
+}
+
+.navigation-item:hover {
+    background-color: #f9f9f9 !important;
+} 
+
+/* ----------------------------------------------------
+   CẤU TRÚC NGÀY THÁNG: Day/Month Stack + Year Ngang
+   ---------------------------------------------------- */
+.post-date-nav {
+    display: flex !important;
+    align-items: center !important;
+    /* Font chung cho ngày tháng */
+    font-size: 1.2em;
+    line-height: 1;
+    color: #333;
+    padding-right: 25px; /* Khoảng cách giữa Ngày tháng và Tiêu đề */
+    font-weight: 500;
+}
+
+.nav-day-group {
+    /* Đây là khối nhóm Ngày và Tháng (tạo stack) */
+    display: flex;
+    flex-direction: column; /* Xếp Ngày và Tháng theo chiều dọc */
+    align-items: center;
+    
+    /* Căn giữa Day/Month Stack trong chiều dọc của Year */
+    justify-content: center;
+    
+    margin-right: 5px; /* Khoảng cách giữa Day/Month Stack và Năm (Year) */
+}
+
+/* Ngày (Day) + Đường gạch ngang */
+.nav-day-group .nav-day {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #444; /* Đường gạch ngang */
+    width: 100%; 
+    text-align: center;
+}
+
+.nav-day-group .nav-month {
+    padding-top: 2px;
+}
+
+/* Năm (Year) */
+.post-date-nav .nav-year {
+    font-size: 0.9em; /* Nhỏ hơn một chút so với Day/Month */
+    /* Căn Năm (Year) vào giữa chiều cao của khối Ngày/Tháng */
+    align-self: center; 
+}
+
+/* ----------------------------------------------------
+   TIÊU ĐỀ và DỌN DẸP
+   ---------------------------------------------------- */
+
+/* Tiêu đề */
+.title-nav {
+    flex-grow: 1; /* Cho phép tiêu đề chiếm hết không gian còn lại */
+    /* Cắt bớt tiêu đề nếu quá dài */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 16px !important;
+    font-weight: bold; /* Tăng độ đậm để nổi bật */
+}
+
+/* Ẩn mũi tên */
+.arrow-nav {
+    display: none !important;
+}
+
+/* Đảm bảo không có mũi tên dịch chuyển trong link Next Post */
+.pagination-single-inner .next-post {
+    flex-direction: row; 
+}
+
+/* end css phần trang  */
 /* Tables ------------------------------------ */
 
 table {
@@ -5850,9 +5964,9 @@ a.to-the-top > * {
 		margin: 4rem 0 0.8rem 0;
 	}
 
-	.pagination-single a + a {
+	/* .pagination-single a + a {
 		margin: 0 0 0 4rem;
-	}
+	} */
 
 	.pagination-single a .arrow {
 		margin: 0 2rem 0 0;
@@ -5860,7 +5974,7 @@ a.to-the-top > * {
 
 	.pagination-single .next-post {
 		flex-direction: row-reverse;
-		text-align: right;
+		text-align: left;
 	}
 
 	.pagination-single .next-post .arrow {
