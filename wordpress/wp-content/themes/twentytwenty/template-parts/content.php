@@ -80,7 +80,24 @@ else :
             }
             ?>
     </div>
+<?php
+    function display_make_a_post_form() {
 
+    ?>
+    <div class="make-post-wrapper section-inner">
+        <div class="make-post-header">Make a Post</div>
+        <div class="make-post-body">
+            <textarea 
+                class="make-post-input" 
+                placeholder="What are you thinking..." 
+                rows="3"
+            ></textarea>
+            <button class="make-post-share">share</button>
+        </div>
+    </div>
+    <?php
+}
+?>
     <?php
         // KIỂM TRA: Nếu là trang đơn lẻ
         if ( is_single() ) { 
@@ -94,13 +111,21 @@ else :
         <span class="author-label">Đăng bởi:</span>
         <?php the_author_posts_link(); // Tác giả cho bài viết đơn lẻ ?>
     </div>
+    
+    
     <?php
         }
         
         // Phần comments
-        if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
-            ?><div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
+        if ( is_user_logged_in() ) {
+            display_make_a_post_form();
         }
+        else{
+            if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+            ?><div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
+            }
+        }
+
         
         // if ( is_single() ) { get_template_part( 'template-parts/navigation' ); }
         
