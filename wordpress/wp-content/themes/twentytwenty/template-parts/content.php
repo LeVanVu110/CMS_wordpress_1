@@ -57,9 +57,17 @@ else :
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
     <div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
-        <div class="entry-content strainline">
-            <!-- <div class="line-divider"></div> -->
+        <div class ="post-content">
+            <div class="entry-content strainline">
+            <div class="date-circle-container">
+                <div class="date-d-m-group">
+                    <span class="date-day"><?php echo get_the_date('d'); ?></span>
+                    <span class="date-month"><?php echo get_the_date('m'); ?></span>
+                </div>
+                <span class="date-year"><?php echo get_the_date('y'); ?></span>
+            </div>
             <?php the_content( __( 'Continue reading', 'twentytwenty' ) ); ?>
+        </div>
         </div>
     </div>
     <div class="section-inner">

@@ -1348,7 +1348,78 @@ input[type="search"]:focus {
 	outline: thin dotted;
 	outline-offset: -4px;
 }
+/* date content  */
+/* --- 1. Positioning and Circle Shape --- */
+.date-circle-container {
+    /* Critical: Set size, shape, and position */
+	position: absolute;
+    width: 80px !important; /* Increased size slightly to fit the text better */
+    height: 80px; 
+    border-radius: 50%;
+    background-color: #fddb3a; /* Yellow/Gold */
+    color: #444; /* Darker text for contrast */
+    
+    position: absolute;
+    top: 70px; /* Example position, adjust as needed */
+    right: 0%; /* Example position, adjust as needed */
+    
+    /* Use Flexbox to manage the D/M group and the Year */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Optional: Subtle box-shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+/* --- 2. Day/Month Group Styling (24/06) --- */
+.date-d-m-group {
+    /* Stack the day and month vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the numbers */
+    
+    /* Position the entire group slightly to the left (if needed) */
+    transform: translateX(-5px); 
+    
+    /* General text style */
+    font-size: 18px; /* Adjust font size */
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+/* Add the horizontal line below the Day (24) */
+.date-d-m-group .date-day {
+    padding-bottom: 3px; /* Space above the line */
+    border-bottom: 2px solid #444; /* The separating line */
+    width: 110%; /* Make the line shorter than the numbers if desired */
+    text-align: center;
+}
+
+.date-d-m-group .date-month {
+    padding-top: 3px; /* Space below the line */
+}
+
+
+/* --- 3. Year Styling (18) --- */
+.date-circle-container .date-year {
+    /* Position the year number to the right */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    right: 15px; /* Adjust right distance */
+    transform: translateY(-50%); /* Fine-tune vertical centering */
+    
+    font-size: 16px; /* Slightly smaller than D/M */
+    font-weight: normal;
+}
+
+/* --- 4. Contextual Positioning (REQUIRED!) --- */
+/* Set the parent container to relative positioning */
+.entry-content { 
+    position: relative;
+    padding-top: 50px; /* Ensure content doesn't get covered by the circle */
+}
+/* end date content  */
 /* Tables ------------------------------------ */
 
 table {
@@ -3113,6 +3184,11 @@ h2.entry-title {
 
 .post-inner {
 	padding-top: 5rem;
+	
+}
+.post-inner .post-content{
+	width: fit-content;
+	margin: 0 auto;
 }
 
 .reduced-spacing.missing-post-thumbnail .post-inner {
