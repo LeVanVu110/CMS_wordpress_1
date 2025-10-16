@@ -2,11 +2,8 @@
 // Bắt đầu cấu trúc mới cho danh sách bài viết (trang chủ, danh mục, tìm kiếm,...)
 if ( ! is_singular() ) :
     ?>
-
-<article <?php post_class( 'custom-post-item' ); ?> id="post-<?php the_ID(); ?>">
-
+<div><article <?php post_class( 'custom-post-item' ); ?> id="post-<?php the_ID(); ?>">
     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="full-link-wrap">
-
         <div class="custom-post-wrap">
             <?php
             // START: THÊM ẢNH ĐẠI DIỆN VÀO ĐÂY
@@ -49,8 +46,10 @@ if ( ! is_singular() ) :
 
             </div>
         </div>
+        <!-- end ct -->
     </a>
-</article><?php
+</article></div>
+<?php
 else :
     // Giữ nguyên code gốc Twenty Twenty cho trang đơn lẻ
     ?>
@@ -145,7 +144,9 @@ else :
                                 </a>
                             <?php endforeach; wp_reset_postdata(); ?>
 
-                            <!-- Nút Xem Tất Cả Tin Tức -->
+                            
+                        </div>
+                        <!-- Nút Xem Tất Cả Tin Tức -->
                             <?php
                             // Lấy URL của trang tin tức/blog chính (Page for Posts)
 $news_page_id = get_option('page_for_posts');
@@ -154,7 +155,6 @@ $news_page_id = get_option('page_for_posts');
                             <a href="<?php echo esc_url($news_archive_url); ?>" class="view-all-news-button">
                                 XEM TẤT CẢ TIN TỨC
                             </a>
-                        </div>
                     <?php endif; ?>
                 </div>
                 <!-- END: Cột 3 Next Post -->
@@ -196,7 +196,8 @@ $news_page_id = get_option('page_for_posts');
             }else{
                 if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required()) {
                     ?>
-        <div class="comments-wrapper section-inner"><?php comments_template(); ?></div><?php
+        <div class="comments-wrapper section-inner"><?php comments_template(); ?></div>
+        <?php
                 }
             }
             ?>

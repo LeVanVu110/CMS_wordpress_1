@@ -29,16 +29,14 @@ if ($comments) {
 
     <div class="comments-header section-inner small max-percentage">
 
-        <h2 class="comment-reply-title">
+        <!-- <h2 class="comment-reply-title">
             <?php
 				if (! have_comments()) {
 					_e('Leave a comment', 'twentytwenty');
 				} elseif ('1' === $comments_number) {
-					/* translators: %s: Post title. */
-					// printf(_x('One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty'), get_the_title());
+					printf(_x('One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty'), get_the_title());
 				} else {
 					printf(
-						/* translators: 1: Number of comments, 2: Post title. */
 						_nx(
 							'%1$s reply on &ldquo;%2$s&rdquo;',
 							'%1$s replies on &ldquo;%2$s&rdquo;',
@@ -52,7 +50,7 @@ if ($comments) {
 				}
 
 				?>
-        </h2><!-- .comments-title -->
+        </h2>.comments-title -->
 
     </div><!-- .comments-header -->
 

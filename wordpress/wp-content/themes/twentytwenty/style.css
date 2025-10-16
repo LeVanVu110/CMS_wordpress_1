@@ -325,6 +325,163 @@ content: "» ";
 
 /*----------------------------------------end----------------------------------------*/
 
+/*---------------------------------------- chia 3 cột ----------------------------------------*/
+/* Bố cục 3 cột */
+.custom-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* trái - giữa - phải */
+    gap: 20px;
+    align-items: start;
+}
+
+.custom-col {
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.custom-post-wrap {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-post-wrap:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.custom-post-thumbnail img {
+    width: 100%;
+    max-width: 200px; /* 👈 Giới hạn chiều rộng tối đa của ảnh */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.custom-post-divider {
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.entry-title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.entry-excerpt {
+    font-size: 16px;
+    color: #555;
+}
+
+.sidebar-placeholder {
+    padding: 10px;
+    background: #efefef;
+    border-radius: 5px;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+/* css cột trái  */
+.custom-col.col-left {
+	width: 500px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+}
+.popular-posts {
+	background: #fff;
+	padding: 10px;
+	/* border: 1px solid #ddd; */
+}
+
+.section-title {
+	font-weight: bold;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	position: relative; /* để ::after căn đúng */
+}
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0; /* sát chữ */
+    height: 2px; /* độ dày gạch đỏ */
+    width: 88px; /* độ dài gạch đỏ, có thể thay đổi theo chữ */
+    background-color: #ccaeb4; /* màu đỏ */
+}
+
+.posts-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 25px;
+	row-gap: 10px;
+	position: relative;
+}
+.posts-grid::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	width: 1px;
+	background-color: #ddd;
+}
+.post-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 6px;
+}
+
+.post-rank {
+	font-size: 42px;
+	font-weight: bold;
+	color: #000;
+	line-height: 1;
+	width: 25px;
+	text-align: center;
+}
+
+.post-title a {
+	color: #000;
+	text-decoration: none;
+	line-height: 1.3;
+	font-size: 16px;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.post-title a:hover {
+	color: #b70000;
+}
+/* Bỏ border-bottom cho bài cuối mỗi cột */
+.posts-grid .post-item:nth-child(odd):last-child,
+.posts-grid .post-item:nth-child(even):last-child {
+	border-bottom: none;
+}
+ /* end cột trái  */
+
+/* css cột phải  */
+.custom-col.col-right {
+	width: 500px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+}
+
+
+
+
+
+
+/*----------------------------------------end  chia 3 cột ----------------------------------------*/
+
 /*----------------------------------------chinh sua bài viết----------------------------------------*/
 /* --- Cấu trúc tổng thể của bài viết trong danh sách --- */
 /* Thiết lập Flexbox để Ngày, Kẻ dọc, và Nội dung nằm ngang */
@@ -336,10 +493,11 @@ content: "» ";
 	display: block;
 
 	/* Canh giữa khối bài viết trên trang */
-	margin: 10px 0 0 100px; /* 15px trên dưới, auto trái phải */
+	margin: 10px 0 0 0 ; /* 15px trên dưới, auto trái phải */
 
 	/* Giới hạn chiều rộng để canh giữa hoạt động */
 }
+
 
 
 .full-link-wrap {
@@ -359,7 +517,7 @@ content: "» ";
 	width: 100%; /* Chiếm toàn bộ không gian của .custom-post-item */
 	max-width: 500px; /* Vẫn giữ giới hạn chiều rộng nội tại */
 	height: 150px;
-	/* padding: 25px; */
+	padding-right: 25px;
 
 	gap: 30px;
 	cursor: pointer;
@@ -5052,7 +5210,6 @@ div.comment:first-of-type {
 .latest-news-block {
     background-color: #4dc4b9; /* Màu xanh ngọc (Teal) */
     padding: 30px;
-    border-radius: 8px; /* Bo góc nhẹ */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: #fff; /* Chữ trắng */
 }
@@ -5123,7 +5280,7 @@ div.comment:first-of-type {
 
 /* Tiêu đề bài viết */
 .post-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
     flex-grow: 1;
@@ -5139,8 +5296,7 @@ div.comment:first-of-type {
     padding: 15px 10px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     transition: background-color 0.3s;
 }
 
@@ -6025,7 +6181,7 @@ a.to-the-top > * {
 	.heading-size-2,
 	h3,
 	.heading-size-3 {
-		margin: 6rem auto 3rem;
+		margin: 2rem auto 3rem;
 	}
 
 	h4,
