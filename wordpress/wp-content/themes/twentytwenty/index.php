@@ -65,6 +65,7 @@ get_header();
 		<!-- Cột trái -->
 		<div class="custom-col col-left">
 	<?php 
+	if(!is_search()){
 	if ( is_active_sidebar( 'sidebar-left' ) ) {
 		dynamic_sidebar( 'sidebar-left' );
 	} else {
@@ -99,7 +100,7 @@ get_header();
 				?>
 			</div>
 		</div>
-	<?php } ?>
+	<?php }} ?>
 </div>
 
 		<!-- Cột giữa -->
@@ -134,19 +135,40 @@ get_header();
 		</div>
 
 		<!-- Cột phải -->
+		 <?php if(!is_search()){ ?>
 		<div class="custom-col col-right">
-			<?php 
-			// if ((comments_open() || get_comments_number())) {
-            //     comments_template();
-			// }
+			<div class="comments" id="comments">
+    <div class="comments-inner section-inner thin max-percentage">
 
-			// if ( is_active_sidebar( 'sidebar-right' ) ) {
-			// 	// dynamic_sidebar( 'sidebar-right' );
+        <div class="comments-box">
+            <h2 class="comments-box-title">Comments</h2>
+            <div class="comments-box-line"></div>
 
-			// } else {
-			// 	echo '<div class="sidebar-placeholder">Sidebar Phải</div>';
-			// }
-			?>
+            <?php
+            // Lấy 5 comment mới nhất
+            $recent_comments = get_comments(array(
+                'number' => 5,
+                'status' => 'approve',
+            ));
+
+            if ($recent_comments) :
+            ?>
+            <ul class="comments-list">
+                <?php foreach ($recent_comments as $comment) : ?>
+                <li><a href="<?php echo esc_url(get_comment_link($comment)); ?>">
+                    <?php echo esc_html($comment->comment_content); ?>
+                </a></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+
+        
+
+    </div>
+</div>
+<?php } else {?><div class="custom-col col-right">heheheh</div>
+	<?php }?>
 		</div>
 
 	</div>
