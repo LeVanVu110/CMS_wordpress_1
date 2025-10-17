@@ -322,7 +322,138 @@ content: "» ";
 	color: #1da1f2 !important; /* màu hover */
 	fill: currentColor !important;
 }
+/* cột phải seacrh  */
+.comments-section {
+	background: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+}
 
+.comments-section .section-title {
+	font-weight: bold;
+	font-size: 18px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	color: #3b7adf;
+}
+
+.comment-item {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 20px;
+	background: #fafafa;
+	padding: 10px;
+	border-radius: 6px;
+	border: 1px solid #eee;
+}
+
+.comment-avatar img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.comment-body {
+	margin-left: 10px;
+	flex: 1;
+}
+
+.comment-author {
+	font-weight: bold;
+	color: #000;
+	margin-bottom: 4px;
+}
+
+.comment-text {
+	font-size: 15px;
+	color: #444;
+	line-height: 1.4;
+	margin-bottom: 6px;
+}
+
+.comment-link {
+	font-size: 14px;
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.comment-link:hover {
+	text-decoration: underline;
+}
+/* end cột phải search  */
+/* cột trái seacrh  */
+.custom-col.col-left {
+	max-width: 300px;
+	margin: 0 auto;
+}
+
+.section-title {
+	color: #3b7adf;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+}
+
+.latest-post-item {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.latest-post-title {
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
+.latest-post-thumbnail img {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.latest-post-heading a {
+	color: #000;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+.latest-post-heading a:hover {
+	color: #b70000;
+}
+
+.latest-post-excerpt {
+	color: #555;
+	font-size: 15px;
+	line-height: 1.5;
+	margin: 8px 0;
+}
+
+.latest-post-category {
+	font-size: 14px;
+	color: #888;
+}
+.latest-post-heading{
+	position: relative;
+	
+}
+.latest-post-heading::before{
+	content: "";
+	position: absolute;
+	border-bottom: 2px solid #000;
+	width: 10%;
+	bottom: 0;
+	color: #a5a9b4;
+}
+/* end cọt trái search  */
 /*----------------------------------------end----------------------------------------*/
 
 /*---------------------------------------- chia 3 cột ----------------------------------------*/
@@ -352,14 +483,6 @@ content: "» ";
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.custom-post-thumbnail img {
-    /* width: 100%; */
-    max-width: 200px; /* 👈 Giới hạn chiều rộng tối đa của ảnh */
-    /* height: auto; */
-    /* border-radius: 10px; */
-    display: block;
-    margin: 0 auto;
-}
 
 
 
@@ -388,7 +511,7 @@ content: "» ";
 }
 /* css cột trái  */
 .custom-col.col-left {
-	width: 450px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 300px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
 .popular-posts {
 	background: #fff;
@@ -404,15 +527,7 @@ content: "» ";
 	padding-bottom: 5px;
 	position: relative; /* để ::after căn đúng */
 }
-.section-title::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0; /* sát chữ */
-    height: 2px; /* độ dày gạch đỏ */
-    width: 88px; /* độ dài gạch đỏ, có thể thay đổi theo chữ */
-    background-color: #ccaeb4; /* màu đỏ */
-}
+
 
 .posts-grid {
 	display: grid;
@@ -471,10 +586,108 @@ content: "» ";
 
 /* css cột phải  */
 .custom-col.col-right {
-	width: 450px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 300px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
  /* end css cột phải */
+/* 15 last post  */
+ /* --- Latest News Timeline --- */
+.latest-news-section {
+    max-width: 700px;
+    margin: 60px auto;
+    font-family: "Segoe UI", sans-serif;
+}
 
+.latest-news-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+/* Timeline container */
+.timeline {
+    position: relative;
+
+}
+
+/* Mỗi item trong timeline */
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.timeline-icon::before {
+    content: "";
+	margin-top: 12px;
+    position: absolute;
+    left: 4px;
+    top: 0;
+	height: 100px;
+    bottom: 0;
+    width: 2.5px;
+    background-color: #d4d9df;
+}
+
+
+/* Icon tròn ở line */
+.timeline-icon {
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #24c1e8;
+    border-radius: 50%;
+    background: #fff;
+}
+
+/* Nội dung */
+.timeline-content {
+    padding-left: 10px;
+}
+
+/* Header chứa title và date */
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+/* Tiêu đề bài viết */
+.timeline-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.timeline-title:hover {
+    text-decoration: underline;
+}
+
+/* Ngày tháng */
+.timeline-date {
+    font-size: 13px;
+    color: #2196f3;
+    white-space: nowrap;
+}
+
+/* Mô tả */
+.timeline-excerpt {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Hiệu ứng nhỏ khi hover vào item */
+.timeline-item:hover .timeline-icon {
+    background: #2196f3;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.2);
+}
+
+/* end 15 last port  */
  
 
 
@@ -592,7 +805,7 @@ content: "» ";
 	display: block;
 
 	/* Canh giữa khối bài viết trên trang */
-	margin: 10px 0 0 0 ; /* 15px trên dưới, auto trái phải */
+	margin: 55px 0 0 0 ; /* 15px trên dưới, auto trái phải */
 
 	/* Giới hạn chiều rộng để canh giữa hoạt động */
 }
@@ -614,7 +827,7 @@ content: "» ";
 
 	/* Đảm bảo chiều rộng đồng nhất và phù hợp với max-width của cha */
 	width: 100%; /* Chiếm toàn bộ không gian của .custom-post-item */
-	max-width: 500px; /* Vẫn giữ giới hạn chiều rộng nội tại */
+	max-width: 600px; /* Vẫn giữ giới hạn chiều rộng nội tại */
 	height: 150px;
 	padding-right: 25px;
 
