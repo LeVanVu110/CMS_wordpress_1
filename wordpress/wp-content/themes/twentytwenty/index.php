@@ -56,6 +56,16 @@ get_header();
 				<?php endif; ?>
 			</div>
 		</header>
+		<div class="no-search-results-form section-inner thin">
+					<?php
+					get_search_form(
+						array(
+							'aria_label' => __( 'search again', 'twentytwenty' ),
+						)
+					);
+					?>
+				</div>
+
 	<?php endif; ?>
 
 
@@ -120,15 +130,7 @@ get_header();
 				get_template_part( 'template-parts/pagination' );
 			elseif ( is_search() ) :
 				?>
-				<div class="no-search-results-form section-inner thin">
-					<?php
-					get_search_form(
-						array(
-							'aria_label' => __( 'search again', 'twentytwenty' ),
-						)
-					);
-					?>
-				</div>
+				
 				<?php
 			endif;
 			?>
@@ -167,9 +169,9 @@ get_header();
 
     </div>
 </div>
-<?php } else {?><div class="custom-col col-right">heheheh</div>
+<?php } else {?>
 	<?php }?>
-		</div>
+		<div class="custom-col col-right">
 
 	</div>
 	<!-- ✅ Kết thúc layout 3 cột -->

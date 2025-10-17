@@ -328,6 +328,7 @@ content: "» ";
 /*---------------------------------------- chia 3 cột ----------------------------------------*/
 /* Bố cục 3 cột */
 .custom-layout {
+	justify-items: center;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; /* trái - giữa - phải */
     gap: 20px;
@@ -342,8 +343,8 @@ content: "» ";
 
 .custom-post-wrap {
     background: #f9f9f9;
-    border-radius: 10px;
-    padding: 15px;
+    /* border-radius: 10px; */
+    /* padding: 15px; */
     transition: box-shadow 0.3s ease;
 }
 
@@ -352,10 +353,10 @@ content: "» ";
 }
 
 .custom-post-thumbnail img {
-    width: 100%;
+    /* width: 100%; */
     max-width: 200px; /* 👈 Giới hạn chiều rộng tối đa của ảnh */
-    height: auto;
-    border-radius: 10px;
+    /* height: auto; */
+    /* border-radius: 10px; */
     display: block;
     margin: 0 auto;
 }
@@ -387,7 +388,7 @@ content: "» ";
 }
 /* css cột trái  */
 .custom-col.col-left {
-	width: 500px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 450px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
 .popular-posts {
 	background: #fff;
@@ -449,16 +450,14 @@ content: "» ";
 .post-title a {
 	color: #000;
 	text-decoration: none;
-	line-height: 1.3;
+	line-height: 1.4;
 	font-size: 16px;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	display: block;
+	word-wrap: break-word;       /* Cho phép chữ xuống dòng khi dài */
+	overflow-wrap: anywhere;     /* Đảm bảo chữ không tràn cột */
 	width: 100%;
 }
+
 
 .post-title a:hover {
 	color: #b70000;
@@ -472,8 +471,11 @@ content: "» ";
 
 /* css cột phải  */
 .custom-col.col-right {
-	width: 500px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 450px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
+ /* end css cột phải */
+
+ 
 
 
 
@@ -481,7 +483,104 @@ content: "» ";
 
 
 /*----------------------------------------end  chia 3 cột ----------------------------------------*/
+ /* ô search (4)  */
 
+ .search-again {
+    background: #faf5eb;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.search-again form {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.search-again input[type="search"] {
+    border: none;
+    padding: 10px 15px;
+    width: 300px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-again input[type="submit"],
+.search-again button {
+    background: #22b14c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-again input[type="submit"]:hover {
+    background: #1b9c42;
+}
+ /* end ô search  */
+ .no-search-results-form .search-form {
+    display: flex;
+    align-items: center;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.no-search-results-form .search-form::before {
+    content: "\f002";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 18px;
+    color: #666;
+    margin-top: 4px;
+    /*margin-right: 6px;*/
+    transition: color 0.3s ease;
+}
+
+/* 2. Tạo kiểu cho Ô nhập liệu (Search Field) - Chứa Icon */
+.no-search-results-form .search-field {
+    flex-grow: 1;
+    /* Tăng padding trái để chừa chỗ cho icon, đây là phần quan trọng */
+    padding: 10px 15px 10px 5px !important;
+    border: none !important;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+}
+
+/* 3. Tạo kiểu cho Nút Tìm kiếm (Search Button) */
+.no-search-results-form .search-submit {
+    background-color: #38A852 !important; /* Màu xanh lá cây */
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+    text-transform: capitalize;
+    border-radius: 3px !important;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.no-search-results-form .search-submit:hover {
+    background-color: #2F8C43 !important;
+}
+
+.custom-post-thumbnail {
+    width: 55% !important;
+}
+
+.home #site-content .custom-post-item .custom-post-wrap .custom-post-date {
+    margin: auto 30px;
+}
 /*----------------------------------------chinh sua bài viết----------------------------------------*/
 /* --- Cấu trúc tổng thể của bài viết trong danh sách --- */
 /* Thiết lập Flexbox để Ngày, Kẻ dọc, và Nội dung nằm ngang */
@@ -3535,7 +3634,7 @@ body:not(.singular) main > article:first-of-type {
 /* Search Results ---------------------------- */
 
 .no-search-results-form {
-	padding-top: 5rem;
+	/* padding-top: 5rem; */
 }
 
 
@@ -6450,7 +6549,7 @@ a.to-the-top > * {
 	/* SEARCH RESULTS */
 
 	.no-search-results-form {
-		padding-top: 8rem;
+		/* padding-top: 8rem; */
 	}
 
 	/* Post: Single -------------------------- */
