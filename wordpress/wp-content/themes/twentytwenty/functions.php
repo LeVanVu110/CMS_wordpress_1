@@ -185,6 +185,10 @@ function twentytwenty_register_block_patterns() {
 }
 
 add_action( 'init', 'twentytwenty_register_block_patterns' );
+function mytheme_enqueue_fontawesome() {
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'mytheme_enqueue_fontawesome');
 
 /**
  * Register and Enqueue Styles.
