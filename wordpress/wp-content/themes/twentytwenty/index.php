@@ -211,7 +211,7 @@ get_header();
     </div>
 </div>
 <?php } else {?>
-		<div></div>
+		<div class="custom-col col-right"></div>
 	<?php }?>
 		
 	<!-- ✅ Kết thúc layout 3 cột -->

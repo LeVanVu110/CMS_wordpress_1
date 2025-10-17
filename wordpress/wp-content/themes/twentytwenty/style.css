@@ -384,7 +384,7 @@ content: "» ";
 /* end cột phải search  */
 /* cột trái seacrh  */
 .custom-col.col-left {
-	max-width: 300px;
+	max-width: 430px;
 	margin: 0 auto;
 }
 
@@ -511,7 +511,7 @@ content: "» ";
 }
 /* css cột trái  */
 .custom-col.col-left {
-	width: 300px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 500px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
 .popular-posts {
 	background: #fff;
@@ -586,7 +586,7 @@ content: "» ";
 
 /* css cột phải  */
 .custom-col.col-right {
-	width: 300px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
+	width: 430px; /* bạn có thể tăng thêm nếu cần (vd: 400px) */
 }
  /* end css cột phải */
 /* 15 last post  */
@@ -621,7 +621,7 @@ content: "» ";
     position: absolute;
     left: 4px;
     top: 0;
-	height: 100px;
+	height: 120px;
     bottom: 0;
     width: 2.5px;
     background-color: #d4d9df;

@@ -5,7 +5,7 @@
  */
 
 get_header(); ?>
-
+<?php if(is_search()){ ?>
 <section class="latest-news-section">
     <h2 class="latest-news-title">Latest News</h2>
 
@@ -36,4 +36,4 @@ get_header(); ?>
         <?php endif; ?>
     </div>
 </section>
-
+<?php  }?>
